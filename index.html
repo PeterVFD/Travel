@@ -10,13 +10,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suchmatrix CallYa Roaming – InfoDok 397</title>
   <style>
-    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--blue:#0b4f8a}
+    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--blue:#0b4f8a;--soft:#fff7f7}
     *{box-sizing:border-box}
     body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fafafa;color:var(--vf-text)}
     header{background:linear-gradient(135deg,var(--vf-red),#b80000);color:#fff;padding:20px 16px}
     header h1{margin:0 0 6px;font-size:26px}
     header p{margin:0;opacity:.95}
-    .wrap{max-width:1500px;margin:0 auto;padding:16px}
+    .wrap{max-width:1550px;margin:0 auto;padding:16px}
     .panel{background:#fff;border:1px solid var(--vf-line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
     .filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto auto;gap:10px;align-items:end}
     label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
@@ -28,7 +28,9 @@
     .stat b{display:block;font-size:22px;margin-top:4px}
     .grid2{display:grid;grid-template-columns:1.45fr .55fr;gap:16px}
     .table-wrap{overflow:auto;border:1px solid var(--vf-line);border-radius:10px}
-    table{width:100%;border-collapse:collapse;min-width:1280px;background:#fff}
+    table{width:100%;border-collapse:collapse;background:#fff}
+    .main-table{min-width:1280px}
+    .compare-table{min-width:1120px}
     th,td{padding:10px 8px;border-bottom:1px solid #ececec;vertical-align:top;text-align:left;font-size:14px}
     th{background:#f0f0f0;position:sticky;top:0;z-index:1}
     tr:hover td{background:#fff8f8}
@@ -42,6 +44,8 @@
     .pricebox ul{margin:0;padding-left:18px}
     .pricebox li{margin:6px 0}
     .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .compare-highlight td{background:var(--soft)}
+    .section-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
     @media (max-width:900px){.filters,.grid2{grid-template-columns:1fr} header h1{font-size:22px}}
   </style>
 </head>
@@ -49,7 +53,7 @@
 <header>
   <div class="wrap">
     <h1>Suchmatrix CallYa Roaming</h1>
-    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – inkl. Preisübersicht und Travel-Paketen</p>
+    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – inkl. Preisübersicht, Vergleichstabelle und Travel-Paketen</p>
   </div>
 </header>
 <div class="wrap">
@@ -169,11 +173,89 @@
     </div>
   </div>
 
+  <div class="panel">
+    <div class="section-title">
+      <h2 style="margin:0">Vergleichstabelle Zonen & Pakete</h2>
+      <span class="small muted">Schneller Direktvergleich der Standardpreise und Travel-Angebote</span>
+    </div>
+    <div class="table-wrap" style="margin-top:12px">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Vergleichspunkt</th>
+            <th>Zone 1</th>
+            <th>Zone 2</th>
+            <th>Zone 3</th>
+            <th>Zone 4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="compare-highlight">
+            <td><b>Abgehend nach Deutschland/EU</b></td>
+            <td>0,09 €/Min.</td>
+            <td>0,19 €/Min.</td>
+            <td>0,29 €/Min.</td>
+            <td>2,99 €/Min.</td>
+          </tr>
+          <tr>
+            <td><b>Abgehend in andere Zonen</b></td>
+            <td>2,99 €/Min.</td>
+            <td>2,99 €/Min.</td>
+            <td>2,99 €/Min.</td>
+            <td>2,99 €/Min.</td>
+          </tr>
+          <tr class="compare-highlight">
+            <td><b>Eingehende Verbindungen</b></td>
+            <td>kostenlos</td>
+            <td>0,19 €/Min.</td>
+            <td>0,29 €/Min.</td>
+            <td>2,99 €/Min.</td>
+          </tr>
+          <tr>
+            <td><b>SMS senden</b></td>
+            <td>0,09 €</td>
+            <td>0,09 €</td>
+            <td>0,19 €</td>
+            <td>0,49 €</td>
+          </tr>
+          <tr class="compare-highlight">
+            <td><b>Daten ohne Paket</b></td>
+            <td>0,03 €/MB</td>
+            <td>0,09 €/MB</td>
+            <td>0,19 €/MB</td>
+            <td>0,99 €/MB</td>
+          </tr>
+          <tr>
+            <td><b>Travel Day</b></td>
+            <td>–</td>
+            <td>1 GB / 4,99 € / Travel1</td>
+            <td>250 MB / 4,99 € / World1</td>
+            <td>100 MB / 4,99 € / Select1</td>
+          </tr>
+          <tr class="compare-highlight">
+            <td><b>Travel Week</b></td>
+            <td>–</td>
+            <td>5 GB / 9,99 € / Travel2</td>
+            <td>1 GB / 9,99 € / World2</td>
+            <td>250 MB / 9,99 € / Select2</td>
+          </tr>
+          <tr>
+            <td><b>Travel Talk</b></td>
+            <td>–</td>
+            <td>200 Units / 9,99 € / Travel9</td>
+            <td>100 Units / 9,99 € / World9</td>
+            <td>50 Units / 9,99 € / Select9</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
   <div class="grid2">
     <div class="panel">
       <h2 style="margin-top:0">Ergebnisliste</h2>
       <div class="table-wrap">
-        <table id="resultTable">
+        <table id="resultTable" class="main-table">
           <thead>
             <tr>
               <th>Typ</th><th>Land / Bereich</th><th>Zone</th><th>3G</th><th>4G</th><th>VoLTE</th><th>5G</th><th>Paket / Leistung</th><th>Preis</th><th>Buchungscode</th><th>Hinweis</th>
@@ -197,7 +279,7 @@
         <h2 style="margin-top:0">Kurzinfo</h2>
         <p><b>Zone 1:</b> EU-Roaming wie in Deutschland, zusätzliche Gebiete u. a. Großbritannien, Island, Liechtenstein, Norwegen, Moldau und Ukraine.</p>
         <p><b>Zone 2–4:</b> Nutzung ohne Paket oder mit Travel-Paketen je Länderzone.</p>
-        <p><b>Neu berücksichtigt:</b> Die Preisübersicht ist jetzt sowohl <b>oben als Schnellansicht</b> als auch <b>unten durchsuchbar in der Tabelle</b> integriert.</p>
+        <p><b>Neu hinzugefügt:</b> Eine Vergleichstabelle für Standardpreise und Travel-Pakete nach Zone.</p>
         <p class="small muted">Diese HTML-Datei wurde aus der hochgeladenen PDF aufgebaut und ist als Suchmatrix/Übersicht gedacht.</p>
       </div>
     </div>

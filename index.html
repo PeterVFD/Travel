@@ -5,18 +5,17 @@
     window.PROTECTED_HUB_URL = "https://petervfd.github.io/haupt/";
   </script>
   <script src="schutz.js"></script>
-  
  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suchmatrix CallYa Roaming – InfoDok 397</title>
   <style>
-    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--blue:#0b4f8a;--soft:#fff7f7;--zone:#fff0f0}
+    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--soft:#fff7f7;--zone:#fff0f0;--blue:#0b4f8a}
     *{box-sizing:border-box}
     body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fafafa;color:var(--vf-text)}
     header{background:linear-gradient(135deg,var(--vf-red),#b80000);color:#fff;padding:20px 16px}
     header h1{margin:0 0 6px;font-size:26px}
     header p{margin:0;opacity:.95}
-    .wrap{max-width:1550px;margin:0 auto;padding:16px}
+    .wrap{max-width:1580px;margin:0 auto;padding:16px}
     .panel{background:#fff;border:1px solid var(--vf-line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
     .filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto auto;gap:10px;align-items:end}
     label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
@@ -30,20 +29,21 @@
     .section-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
     .table-wrap{overflow:auto;border:1px solid var(--vf-line);border-radius:10px;background:#fff}
     table{width:100%;border-collapse:collapse;background:#fff}
-    .main-table{min-width:1420px}
+    .main-table{min-width:1600px}
     .compare-table{min-width:1080px}
     th,td{padding:10px 8px;border-bottom:1px solid #ececec;vertical-align:top;text-align:left;font-size:14px}
     th{background:#f0f0f0;position:sticky;top:0;z-index:1}
     tr:hover td{background:#fff8f8}
     .tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#ffe5e5;color:#a30000;font-weight:bold;font-size:12px}
-    .yes{color:var(--ok);font-weight:bold}
-    .no{color:var(--no)}
+    .yes{color:var(--ok);font-weight:bold}.no{color:var(--no)}
     .small{font-size:12px}.muted{color:#666}.note{font-size:13px;line-height:1.45}
     .compare-highlight td{background:var(--soft)}
     .zone-col{background:var(--zone) !important}
-    .result-layout{display:grid;grid-template-rows:auto auto;gap:16px}
-    .pkg{font-weight:bold;color:#0b4f8a}
-    .pkg-note{display:block;color:#666;font-size:12px;margin-top:3px}
+    .pkg-block{line-height:1.45}
+    .pkg-main{font-weight:bold;color:var(--blue);margin-bottom:4px}
+    .pkg-list{margin:0;padding-left:18px}
+    .pkg-list li{margin:4px 0}
+    .code{display:inline-block;padding:1px 6px;border-radius:999px;background:#eef6ff;color:var(--blue);font-size:12px;font-weight:bold}
     @media (max-width:900px){.filters,.grid2{grid-template-columns:1fr} header h1{font-size:22px}}
   </style>
 </head>
@@ -51,7 +51,7 @@
 <header>
   <div class="wrap">
     <h1>Suchmatrix CallYa Roaming</h1>
-    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – Travel-Paket jetzt direkt passend zur Zone im Suchergebnis</p>
+    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – alle drei Travel-Pakete direkt in der Länderzeile</p>
   </div>
 </header>
 <div class="wrap">
@@ -59,7 +59,7 @@
     <div class="filters">
       <div>
         <label for="q">Suche nach Land, Zone, Netzstandard, Paket, Preis oder Buchungscode</label>
-        <input id="q" type="text" placeholder="z. B. USA, Türkei, Zone 2, VoLTE, Travel1, 0,19 €" />
+        <input id="q" type="text" placeholder="z. B. Italien, USA, Zone 2, VoLTE, Travel1, World2" />
       </div>
       <div>
         <label for="typ">Datentyp</label>
@@ -97,32 +97,27 @@
   </div>
 
   <div class="grid2">
-    <div class="result-layout">
+    <div>
       <div class="panel">
         <div class="section-title">
           <h2 style="margin:0">Integrierte Preistabelle im Suchergebnis</h2>
-          <span class="small muted">Die Preis- und Travel-Übersicht bleibt direkt im Ergebnisbereich sichtbar.</span>
+          <span class="small muted">Direktvergleich der Zonen und Travel-Angebote</span>
         </div>
         <div class="table-wrap" style="margin-top:12px;">
           <table class="compare-table" id="compareTable">
             <thead>
               <tr>
-                <th>Vergleichspunkt</th>
-                <th id="h1">Zone 1</th>
-                <th id="h2">Zone 2</th>
-                <th id="h3">Zone 3</th>
-                <th id="h4">Zone 4</th>
+                <th>Vergleichspunkt</th><th id="h1">Zone 1</th><th id="h2">Zone 2</th><th id="h3">Zone 3</th><th id="h4">Zone 4</th>
               </tr>
             </thead>
             <tbody></tbody>
           </table>
         </div>
       </div>
-
       <div class="panel">
         <div class="section-title">
           <h2 style="margin:0">Suchergebnis</h2>
-          <span class="small muted">Bei Ländern wird in der Spalte „Paket / Leistung“ automatisch das passende Travel-Paket zur Zone angezeigt.</span>
+          <span class="small muted">Bei Ländern werden jetzt alle drei passenden Travel-Pakete direkt in derselben Zeile angezeigt.</span>
         </div>
         <div class="table-wrap" style="margin-top:12px;">
           <table id="resultTable" class="main-table">
@@ -136,7 +131,6 @@
         </div>
       </div>
     </div>
-
     <div>
       <div class="panel">
         <h2 style="margin-top:0">Kennzahlen</h2>
@@ -147,11 +141,11 @@
           <div class="stat"><span class="muted">Preiszeilen</span><b id="countPrices">0</b></div>
         </div>
       </div>
-     <!-- <div class="panel note">
+     >!-- <div class="panel note">
         <h2 style="margin-top:0">Kurzinfo</h2>
-        <p><b>Neu:</b> Für jeden Länder-Treffer wird jetzt in der Spalte <b>„Paket / Leistung“</b> automatisch das zur Zone passende Travel-Paket angezeigt.</p>
-        <p><b>Beispiel:</b> Italien (Zone 1) zeigt „EU-Roaming wie in Deutschland“, USA (Zone 2) zeigt CallYa Travel, Thailand (Zone 3) zeigt CallYa Travel World.</p>
-        <p class="small muted">Die Paketdetails mit Preis und Code sind ebenfalls direkt in derselben Zeile sichtbar.</p>
+        <p><b>Neu:</b> Bei Ländern in Zone 2, 3 und 4 stehen jetzt <b>alle drei Travel-Pakete</b> direkt im Suchergebnis.</p>
+        <p><b>Zone 1:</b> Zeigt EU-Roaming wie in Deutschland.</p>
+        <p><b>Zone 2–4:</b> Zeigt Day, Week und Talk jeweils mit Preis und Buchungscode in derselben Länderzeile.</p>
       </div>-->
     </div>
   </div>
@@ -170,10 +164,30 @@ const compareRows = [
 ];
 
 const zonePackageMap = {
-  '1': { paket: 'EU-Roaming wie in Deutschland', preis: 'keine Zusatzkosten / Heimattarif', code: '-', hinweis: 'Zone 1: Nutzung zu nationalen Konditionen' },
-  '2': { paket: 'CallYa Travel (Day / Week / Talk)', preis: '4,99 € / 1 Tag | 9,99 € / 7 Tage', code: 'Travel1 / Travel2 / Travel9', hinweis: 'Zone 2: 1 GB | 5 GB | 200 Units' },
-  '3': { paket: 'CallYa Travel World (Day / Week / Talk)', preis: '4,99 € / 1 Tag | 9,99 € / 7 Tage', code: 'World1 / World2 / World9', hinweis: 'Zone 3: 250 MB | 1 GB | 100 Units' },
-  '4': { paket: 'CallYa Travel Select (Day / Week / Talk)', preis: '4,99 € / 1 Tag | 9,99 € / 7 Tage', code: 'Select1 / Select2 / Select9', hinweis: 'Zone 4: 100 MB | 250 MB | 50 Units' }
+  '1': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">EU-Roaming wie in Deutschland</div><div>Nutzung zu nationalen Konditionen</div></div>',
+    preisHtml: 'keine Zusatzkosten / Heimattarif',
+    codeHtml: '-',
+    hinweis: 'Zone 1: Nutzung zu nationalen Konditionen'
+  },
+  '2': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">CallYa Travel</div><ul class="pkg-list"><li>Travel Day – 1 GB</li><li>Travel Week – 5 GB</li><li>Travel Talk – 200 Units</li></ul></div>',
+    preisHtml: '<div class="pkg-block"><div>4,99 € / 1 Tag</div><div>9,99 € / 7 Tage</div><div>9,99 € / 7 Tage</div></div>',
+    codeHtml: '<div class="pkg-block"><div><span class="code">Travel1</span></div><div><span class="code">Travel2</span></div><div><span class="code">Travel9</span></div></div>',
+    hinweis: 'Zone 2: CallYa Travel Day / Week / Talk'
+  },
+  '3': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">CallYa Travel World</div><ul class="pkg-list"><li>World Day – 250 MB</li><li>World Week – 1 GB</li><li>World Talk – 100 Units</li></ul></div>',
+    preisHtml: '<div class="pkg-block"><div>4,99 € / 1 Tag</div><div>9,99 € / 7 Tage</div><div>9,99 € / 7 Tage</div></div>',
+    codeHtml: '<div class="pkg-block"><div><span class="code">World1</span></div><div><span class="code">World2</span></div><div><span class="code">World9</span></div></div>',
+    hinweis: 'Zone 3: CallYa Travel World Day / Week / Talk'
+  },
+  '4': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">CallYa Travel Select</div><ul class="pkg-list"><li>Select Day – 100 MB</li><li>Select Week – 250 MB</li><li>Select Talk – 50 Units</li></ul></div>',
+    preisHtml: '<div class="pkg-block"><div>4,99 € / 1 Tag</div><div>9,99 € / 7 Tage</div><div>9,99 € / 7 Tage</div></div>',
+    codeHtml: '<div class="pkg-block"><div><span class="code">Select1</span></div><div><span class="code">Select2</span></div><div><span class="code">Select9</span></div></div>',
+    hinweis: 'Zone 4: CallYa Travel Select Day / Week / Talk'
+  }
 };
 
 function add(o){rows.push(o)}
@@ -247,12 +261,12 @@ function renderCompare(){
 
 function enrichedRow(r){
   if(r.typ !== 'Land') return r;
-  const m = zonePackageMap[r.zone] || {paket:'-',preis:'-',code:'-',hinweis:r.hinweis};
+  const m = zonePackageMap[r.zone] || {paketHtml:'-',preisHtml:'-',codeHtml:'-',hinweis:r.hinweis};
   return {
     ...r,
-    paket: `<span class="pkg">${m.paket}</span><span class="pkg-note">${m.hinweis}</span>`,
-    preis: m.preis,
-    code: m.code,
+    paket: m.paketHtml,
+    preis: m.preisHtml,
+    code: m.codeHtml,
     hinweis: r.hinweis
   };
 }

@@ -6,11 +6,11 @@
   </script>
   <script src="schutz.js"></script>
   
-  <meta charset="UTF-8" />
+ <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Suchmatrix CallYa Roaming – InfoDok 397</title>
   <style>
-    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--blue:#0b4f8a;--soft:#fff7f7}
+    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--blue:#0b4f8a;--soft:#fff7f7;--zone:#fff0f0}
     *{box-sizing:border-box}
     body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fafafa;color:var(--vf-text)}
     header{background:linear-gradient(135deg,var(--vf-red),#b80000);color:#fff;padding:20px 16px}
@@ -26,11 +26,12 @@
     .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
     .stat{background:var(--vf-gray);border:1px solid var(--vf-line);border-radius:10px;padding:12px}
     .stat b{display:block;font-size:22px;margin-top:4px}
-    .grid2{display:grid;grid-template-columns:1.45fr .55fr;gap:16px}
-    .table-wrap{overflow:auto;border:1px solid var(--vf-line);border-radius:10px}
+    .grid2{display:grid;grid-template-columns:1.5fr .5fr;gap:16px}
+    .section-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
+    .table-wrap{overflow:auto;border:1px solid var(--vf-line);border-radius:10px;background:#fff}
     table{width:100%;border-collapse:collapse;background:#fff}
-    .main-table{min-width:1280px}
-    .compare-table{min-width:1120px}
+    .main-table{min-width:1420px}
+    .compare-table{min-width:1080px}
     th,td{padding:10px 8px;border-bottom:1px solid #ececec;vertical-align:top;text-align:left;font-size:14px}
     th{background:#f0f0f0;position:sticky;top:0;z-index:1}
     tr:hover td{background:#fff8f8}
@@ -38,14 +39,11 @@
     .yes{color:var(--ok);font-weight:bold}
     .no{color:var(--no)}
     .small{font-size:12px}.muted{color:#666}.note{font-size:13px;line-height:1.45}
-    .pricegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
-    .pricebox{border:1px solid var(--vf-line);border-radius:10px;padding:12px;background:#fff}
-    .pricebox h3{margin:0 0 10px;font-size:16px;color:var(--blue)}
-    .pricebox ul{margin:0;padding-left:18px}
-    .pricebox li{margin:6px 0}
-    .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
     .compare-highlight td{background:var(--soft)}
-    .section-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
+    .zone-col{background:var(--zone) !important}
+    .result-layout{display:grid;grid-template-rows:auto auto;gap:16px}
+    .pkg{font-weight:bold;color:#0b4f8a}
+    .pkg-note{display:block;color:#666;font-size:12px;margin-top:3px}
     @media (max-width:900px){.filters,.grid2{grid-template-columns:1fr} header h1{font-size:22px}}
   </style>
 </head>
@@ -53,7 +51,7 @@
 <header>
   <div class="wrap">
     <h1>Suchmatrix CallYa Roaming</h1>
-    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – inkl. Preisübersicht, Vergleichstabelle und Travel-Paketen</p>
+    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – Travel-Paket jetzt direkt passend zur Zone im Suchergebnis</p>
   </div>
 </header>
 <div class="wrap">
@@ -98,173 +96,47 @@
     </div>
   </div>
 
-  <div class="panel">
-    <h2 style="margin-top:0">Preisübersicht direkt im Blick</h2>
-    <div class="pricegrid">
-      <div class="pricebox">
-        <h3>Ohne Travel-Paket – Zone 1</h3>
-        <ul>
-          <li>Abgehend nach Deutschland/EU: <b>0,09 €/Min.</b></li>
-          <li>Abgehend in andere Zonen: <b>2,99 €/Min.</b></li>
-          <li>Eingehend: <b>kostenlos</b></li>
-          <li>SMS senden: <b>0,09 €</b></li>
-          <li>Daten: <b>0,03 €/MB</b></li>
-        </ul>
-      </div>
-      <div class="pricebox">
-        <h3>Ohne Travel-Paket – Zone 2</h3>
-        <ul>
-          <li>Abgehend nach Deutschland/EU: <b>0,19 €/Min.</b></li>
-          <li>Abgehend in andere Zonen: <b>2,99 €/Min.</b></li>
-          <li>Eingehend: <b>0,19 €/Min.</b></li>
-          <li>SMS senden: <b>0,09 €</b></li>
-          <li>Daten: <b>0,09 €/MB</b></li>
-        </ul>
-      </div>
-      <div class="pricebox">
-        <h3>Ohne Travel-Paket – Zone 3</h3>
-        <ul>
-          <li>Abgehend nach Deutschland/EU: <b>0,29 €/Min.</b></li>
-          <li>Abgehend in andere Zonen: <b>2,99 €/Min.</b></li>
-          <li>Eingehend: <b>0,29 €/Min.</b></li>
-          <li>SMS senden: <b>0,19 €</b></li>
-          <li>Daten: <b>0,19 €/MB</b></li>
-        </ul>
-      </div>
-      <div class="pricebox">
-        <h3>Ohne Travel-Paket – Zone 4</h3>
-        <ul>
-          <li>Abgehend nach Deutschland/EU: <b>2,99 €/Min.</b></li>
-          <li>Abgehend in andere Zonen: <b>2,99 €/Min.</b></li>
-          <li>Eingehend: <b>2,99 €/Min.</b></li>
-          <li>SMS senden: <b>0,49 €</b></li>
-          <li>Daten: <b>0,99 €/MB</b></li>
-        </ul>
-      </div>
-      <div class="pricebox">
-        <h3>Travel-Pakete Zone 2 – CallYa Travel</h3>
-        <ul>
-          <li>Travel Day: <b>1 GB</b> – <b>4,99 € / 1 Tag</b> – Code <b>Travel1</b></li>
-          <li>Travel Week: <b>5 GB</b> – <b>9,99 € / 7 Tage</b> – Code <b>Travel2</b></li>
-          <li>Travel Talk: <b>200 Units</b> – <b>9,99 € / 7 Tage</b> – Code <b>Travel9</b></li>
-        </ul>
-      </div>
-      <div class="pricebox">
-        <h3>Travel-Pakete Zone 3 – CallYa Travel World</h3>
-        <ul>
-          <li>World Day: <b>250 MB</b> – <b>4,99 € / 1 Tag</b> – Code <b>World1</b></li>
-          <li>World Week: <b>1 GB</b> – <b>9,99 € / 7 Tage</b> – Code <b>World2</b></li>
-          <li>World Talk: <b>100 Units</b> – <b>9,99 € / 7 Tage</b> – Code <b>World9</b></li>
-        </ul>
-      </div>
-      <div class="pricebox">
-        <h3>Travel-Pakete Zone 4 – CallYa Travel Select</h3>
-        <ul>
-          <li>Select Day: <b>100 MB</b> – <b>4,99 € / 1 Tag</b> – Code <b>Select1</b></li>
-          <li>Select Week: <b>250 MB</b> – <b>9,99 € / 7 Tage</b> – Code <b>Select2</b></li>
-          <li>Select Talk: <b>50 Units</b> – <b>9,99 € / 7 Tage</b> – Code <b>Select9</b></li>
-        </ul>
-      </div>
-    </div>
-    <div class="legend">
-      <span class="tag">Preisübersicht ohne Paket</span>
-      <span class="tag">Travel-Pakete Zone 2–4</span>
-      <span class="tag">Suchbar in der Tabelle unten</span>
-    </div>
-  </div>
-
-  <div class="panel">
-    <div class="section-title">
-      <h2 style="margin:0">Vergleichstabelle Zonen & Pakete</h2>
-      <span class="small muted">Schneller Direktvergleich der Standardpreise und Travel-Angebote</span>
-    </div>
-    <div class="table-wrap" style="margin-top:12px">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th>Vergleichspunkt</th>
-            <th>Zone 1</th>
-            <th>Zone 2</th>
-            <th>Zone 3</th>
-            <th>Zone 4</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="compare-highlight">
-            <td><b>Abgehend nach Deutschland/EU</b></td>
-            <td>0,09 €/Min.</td>
-            <td>0,19 €/Min.</td>
-            <td>0,29 €/Min.</td>
-            <td>2,99 €/Min.</td>
-          </tr>
-          <tr>
-            <td><b>Abgehend in andere Zonen</b></td>
-            <td>2,99 €/Min.</td>
-            <td>2,99 €/Min.</td>
-            <td>2,99 €/Min.</td>
-            <td>2,99 €/Min.</td>
-          </tr>
-          <tr class="compare-highlight">
-            <td><b>Eingehende Verbindungen</b></td>
-            <td>kostenlos</td>
-            <td>0,19 €/Min.</td>
-            <td>0,29 €/Min.</td>
-            <td>2,99 €/Min.</td>
-          </tr>
-          <tr>
-            <td><b>SMS senden</b></td>
-            <td>0,09 €</td>
-            <td>0,09 €</td>
-            <td>0,19 €</td>
-            <td>0,49 €</td>
-          </tr>
-          <tr class="compare-highlight">
-            <td><b>Daten ohne Paket</b></td>
-            <td>0,03 €/MB</td>
-            <td>0,09 €/MB</td>
-            <td>0,19 €/MB</td>
-            <td>0,99 €/MB</td>
-          </tr>
-          <tr>
-            <td><b>Travel Day</b></td>
-            <td>–</td>
-            <td>1 GB / 4,99 € / Travel1</td>
-            <td>250 MB / 4,99 € / World1</td>
-            <td>100 MB / 4,99 € / Select1</td>
-          </tr>
-          <tr class="compare-highlight">
-            <td><b>Travel Week</b></td>
-            <td>–</td>
-            <td>5 GB / 9,99 € / Travel2</td>
-            <td>1 GB / 9,99 € / World2</td>
-            <td>250 MB / 9,99 € / Select2</td>
-          </tr>
-          <tr>
-            <td><b>Travel Talk</b></td>
-            <td>–</td>
-            <td>200 Units / 9,99 € / Travel9</td>
-            <td>100 Units / 9,99 € / World9</td>
-            <td>50 Units / 9,99 € / Select9</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
   <div class="grid2">
-    <div class="panel">
-      <h2 style="margin-top:0">Ergebnisliste</h2>
-      <div class="table-wrap">
-        <table id="resultTable" class="main-table">
-          <thead>
-            <tr>
-              <th>Typ</th><th>Land / Bereich</th><th>Zone</th><th>3G</th><th>4G</th><th>VoLTE</th><th>5G</th><th>Paket / Leistung</th><th>Preis</th><th>Buchungscode</th><th>Hinweis</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+    <div class="result-layout">
+      <div class="panel">
+        <div class="section-title">
+          <h2 style="margin:0">Integrierte Preistabelle im Suchergebnis</h2>
+          <span class="small muted">Die Preis- und Travel-Übersicht bleibt direkt im Ergebnisbereich sichtbar.</span>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table class="compare-table" id="compareTable">
+            <thead>
+              <tr>
+                <th>Vergleichspunkt</th>
+                <th id="h1">Zone 1</th>
+                <th id="h2">Zone 2</th>
+                <th id="h3">Zone 3</th>
+                <th id="h4">Zone 4</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-title">
+          <h2 style="margin:0">Suchergebnis</h2>
+          <span class="small muted">Bei Ländern wird in der Spalte „Paket / Leistung“ automatisch das passende Travel-Paket zur Zone angezeigt.</span>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table id="resultTable" class="main-table">
+            <thead>
+              <tr>
+                <th>Typ</th><th>Land / Bereich</th><th>Zone</th><th>3G</th><th>4G</th><th>VoLTE</th><th>5G</th><th>Paket / Leistung</th><th>Preis</th><th>Buchungscode</th><th>Hinweis</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
+
     <div>
       <div class="panel">
         <h2 style="margin-top:0">Kennzahlen</h2>
@@ -275,20 +147,38 @@
           <div class="stat"><span class="muted">Preiszeilen</span><b id="countPrices">0</b></div>
         </div>
       </div>
-     <!-- <div class="panel note">
+      <div class="panel note">
         <h2 style="margin-top:0">Kurzinfo</h2>
-        <p><b>Zone 1:</b> EU-Roaming wie in Deutschland, zusätzliche Gebiete u. a. Großbritannien, Island, Liechtenstein, Norwegen, Moldau und Ukraine.</p>
-        <p><b>Zone 2–4:</b> Nutzung ohne Paket oder mit Travel-Paketen je Länderzone.</p>
-        <p><b>Neu hinzugefügt:</b> Eine Vergleichstabelle für Standardpreise und Travel-Pakete nach Zone.</p>
-        <p class="small muted">Diese HTML-Datei wurde aus der hochgeladenen PDF aufgebaut und ist als Suchmatrix/Übersicht gedacht.</p>
-      </div>-->
+        <p><b>Neu:</b> Für jeden Länder-Treffer wird jetzt in der Spalte <b>„Paket / Leistung“</b> automatisch das zur Zone passende Travel-Paket angezeigt.</p>
+        <p><b>Beispiel:</b> Italien (Zone 1) zeigt „EU-Roaming wie in Deutschland“, USA (Zone 2) zeigt CallYa Travel, Thailand (Zone 3) zeigt CallYa Travel World.</p>
+        <p class="small muted">Die Paketdetails mit Preis und Code sind ebenfalls direkt in derselben Zeile sichtbar.</p>
+      </div>
     </div>
   </div>
 </div>
 <script>
 const rows = [];
+const compareRows = [
+  {title:'Abgehend nach Deutschland/EU', z1:'0,09 €/Min.', z2:'0,19 €/Min.', z3:'0,29 €/Min.', z4:'2,99 €/Min.'},
+  {title:'Abgehend in andere Zonen', z1:'2,99 €/Min.', z2:'2,99 €/Min.', z3:'2,99 €/Min.', z4:'2,99 €/Min.'},
+  {title:'Eingehende Verbindungen', z1:'kostenlos', z2:'0,19 €/Min.', z3:'0,29 €/Min.', z4:'2,99 €/Min.'},
+  {title:'SMS senden', z1:'0,09 €', z2:'0,09 €', z3:'0,19 €', z4:'0,49 €'},
+  {title:'Daten ohne Paket', z1:'0,03 €/MB', z2:'0,09 €/MB', z3:'0,19 €/MB', z4:'0,99 €/MB'},
+  {title:'Travel Day', z1:'–', z2:'1 GB / 4,99 € / Travel1', z3:'250 MB / 4,99 € / World1', z4:'100 MB / 4,99 € / Select1'},
+  {title:'Travel Week', z1:'–', z2:'5 GB / 9,99 € / Travel2', z3:'1 GB / 9,99 € / World2', z4:'250 MB / 9,99 € / Select2'},
+  {title:'Travel Talk', z1:'–', z2:'200 Units / 9,99 € / Travel9', z3:'100 Units / 9,99 € / World9', z4:'50 Units / 9,99 € / Select9'}
+];
+
+const zonePackageMap = {
+  '1': { paket: 'EU-Roaming wie in Deutschland', preis: 'keine Zusatzkosten / Heimattarif', code: '-', hinweis: 'Zone 1: Nutzung zu nationalen Konditionen' },
+  '2': { paket: 'CallYa Travel (Day / Week / Talk)', preis: '4,99 € / 1 Tag | 9,99 € / 7 Tage', code: 'Travel1 / Travel2 / Travel9', hinweis: 'Zone 2: 1 GB | 5 GB | 200 Units' },
+  '3': { paket: 'CallYa Travel World (Day / Week / Talk)', preis: '4,99 € / 1 Tag | 9,99 € / 7 Tage', code: 'World1 / World2 / World9', hinweis: 'Zone 3: 250 MB | 1 GB | 100 Units' },
+  '4': { paket: 'CallYa Travel Select (Day / Week / Talk)', preis: '4,99 € / 1 Tag | 9,99 € / 7 Tage', code: 'Select1 / Select2 / Select9', hinweis: 'Zone 4: 100 MB | 250 MB | 50 Units' }
+};
+
 function add(o){rows.push(o)}
 function yn(v){ if(v==='Ja') return '<span class="yes">Ja</span>'; if(v==='-') return '<span class="no">-</span>'; return v||'-'; }
+function norm(v){return (v||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss');}
 
 [
  ['Preisübersicht','Zone 1','1','-','-','-','-','Abgehend nach Deutschland/EU','0,09 €/Min.','-','Ohne Travel-Paket'],
@@ -307,10 +197,10 @@ function yn(v){ if(v==='Ja') return '<span class="yes">Ja</span>'; if(v==='-') r
  ['Preisübersicht','Zone 2','2','-','-','-','-','SMS versenden','0,09 €','-','SMS empfangen kostenlos'],
  ['Preisübersicht','Zone 3','3','-','-','-','-','SMS versenden','0,19 €','-','SMS empfangen kostenlos'],
  ['Preisübersicht','Zone 4','4','-','-','-','-','SMS versenden','0,49 €','-','SMS empfangen kostenlos'],
- ['Preisübersicht','Zone 1','1','-','-','-','-','Daten pro MB','0,03 €','-','Ohne Travel-Paket'],
- ['Preisübersicht','Zone 2','2','-','-','-','-','Daten pro MB','0,09 €','-','Ohne Travel-Paket'],
- ['Preisübersicht','Zone 3','3','-','-','-','-','Daten pro MB','0,19 €','-','Ohne Travel-Paket'],
- ['Preisübersicht','Zone 4','4','-','-','-','-','Daten pro MB','0,99 €','-','Ohne Travel-Paket']
+ ['Preisübersicht','Zone 1','1','-','-','-','-','Daten pro MB','0,03 €/MB','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 2','2','-','-','-','-','Daten pro MB','0,09 €/MB','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 3','3','-','-','-','-','Daten pro MB','0,19 €/MB','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 4','4','-','-','-','-','Daten pro MB','0,99 €/MB','-','Ohne Travel-Paket']
 ].forEach(r=>add({typ:r[0],land:r[1],zone:r[2],g3:r[3],g4:r[4],volte:r[5],g5:r[6],paket:r[7],preis:r[8],code:r[9],hinweis:r[10]}));
 
 [
@@ -341,19 +231,48 @@ const countries = [
 countries.forEach(c=>add({typ:'Land',land:c[0],zone:c[1],g3:c[2],g4:c[3],volte:c[4],g5:c[5],paket:'-',preis:'-',code:'-',hinweis:'Länderliste CallYa Roaming'}));
 
 const tbody=document.querySelector('#resultTable tbody');
+const compareBody=document.querySelector('#compareTable tbody');
 const q=document.getElementById('q'); const typ=document.getElementById('typ'); const zone=document.getElementById('zone'); const netz=document.getElementById('netz');
-function norm(v){return (v||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss');}
-function render(data){
-  tbody.innerHTML = data.map(r=>`<tr><td>${r.typ}</td><td><b>${r.land}</b></td><td>${r.zone==='-'?'-':'<span class="tag">Zone '+r.zone+'</span>'}</td><td>${yn(r.g3)}</td><td>${yn(r.g4)}</td><td>${yn(r.volte)}</td><td>${yn(r.g5)}</td><td>${r.paket}</td><td>${r.preis}</td><td>${r.code}</td><td>${r.hinweis}</td></tr>`).join('');
+
+function renderCompare(){
+  const s = norm(q.value.trim());
+  const filtered = compareRows.filter(r => {
+    const txt = norm([r.title,r.z1,r.z2,r.z3,r.z4].join(' '));
+    return !s || txt.includes(s) || (zone.value && ['1','2','3','4'].includes(zone.value));
+  });
+  const items = filtered.length ? filtered : compareRows;
+  compareBody.innerHTML = items.map((r, idx) => `\n    <tr class="${idx % 2 === 0 ? 'compare-highlight' : ''}">\n      <td><b>${r.title}</b></td>\n      <td class="${zone.value==='1' ? 'zone-col' : ''}">${r.z1}</td>\n      <td class="${zone.value==='2' ? 'zone-col' : ''}">${r.z2}</td>\n      <td class="${zone.value==='3' ? 'zone-col' : ''}">${r.z3}</td>\n      <td class="${zone.value==='4' ? 'zone-col' : ''}">${r.z4}</td>\n    </tr>`).join('');
+  ['1','2','3','4'].forEach(z => document.getElementById('h'+z).classList.toggle('zone-col', zone.value===z));
+}
+
+function enrichedRow(r){
+  if(r.typ !== 'Land') return r;
+  const m = zonePackageMap[r.zone] || {paket:'-',preis:'-',code:'-',hinweis:r.hinweis};
+  return {
+    ...r,
+    paket: `<span class="pkg">${m.paket}</span><span class="pkg-note">${m.hinweis}</span>`,
+    preis: m.preis,
+    code: m.code,
+    hinweis: r.hinweis
+  };
+}
+
+function renderResults(data){
+  tbody.innerHTML = data.map(base=>{
+    const r = enrichedRow(base);
+    return `<tr><td>${r.typ}</td><td><b>${r.land}</b></td><td>${r.zone==='-'?'-':'<span class="tag">Zone '+r.zone+'</span>'}</td><td>${yn(r.g3)}</td><td>${yn(r.g4)}</td><td>${yn(r.volte)}</td><td>${yn(r.g5)}</td><td>${r.paket}</td><td>${r.preis}</td><td>${r.code}</td><td>${r.hinweis}</td></tr>`;
+  }).join('');
   document.getElementById('countRows').textContent = data.length;
   document.getElementById('countCountries').textContent = rows.filter(r=>r.typ==='Land').length;
   document.getElementById('countPackages').textContent = rows.filter(r=>r.typ==='Paket').length;
   document.getElementById('countPrices').textContent = rows.filter(r=>r.typ==='Preisübersicht').length;
 }
+
 function filterData(){
   const s=norm(q.value.trim()), t=typ.value, z=zone.value, n=netz.value;
   const filtered = rows.filter(r=>{
-    const txt = norm([r.typ,r.land,r.zone,r.g3,r.g4,r.volte,r.g5,r.paket,r.preis,r.code,r.hinweis].join(' '));
+    const extra = r.typ==='Land' && zonePackageMap[r.zone] ? JSON.stringify(zonePackageMap[r.zone]) : '';
+    const txt = norm([r.typ,r.land,r.zone,r.g3,r.g4,r.volte,r.g5,r.paket,r.preis,r.code,r.hinweis,extra].join(' '));
     const a = !s || txt.includes(s);
     const b = !t || r.typ===t;
     const c = !z || r.zone===z;
@@ -364,8 +283,10 @@ function filterData(){
     if(n==='5G') d = r.g5==='Ja';
     return a && b && c && d;
   }).sort((a,b)=>a.land.localeCompare(b.land,'de'));
-  render(filtered);
+  renderCompare();
+  renderResults(filtered);
 }
+
 document.getElementById('btnSearch').addEventListener('click',filterData);
 document.getElementById('btnReset').addEventListener('click',()=>{q.value='';typ.value='';zone.value='';netz.value='';filterData();});
 q.addEventListener('input',filterData); typ.addEventListener('change',filterData); zone.addEventListener('change',filterData); netz.addEventListener('change',filterData);

@@ -1,1 +1,311 @@
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <script>
+    window.PROTECTED_HUB_URL = "https://petervfd.github.io/haupt/";
+  </script>
+  <script src="schutz.js"></script>
+ <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Suchmatrix CallYa Roaming – InfoDok 397</title>
+  <style>
+    :root{--vf-red:#e60000;--vf-gray:#f5f5f5;--vf-line:#d9d9d9;--vf-text:#222;--ok:#1f7a1f;--no:#777;--soft:#fff7f7;--zone:#fff0f0;--blue:#0b4f8a}
+    *{box-sizing:border-box}
+    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#fafafa;color:var(--vf-text)}
+    header{background:linear-gradient(135deg,var(--vf-red),#b80000);color:#fff;padding:20px 16px}
+    header h1{margin:0 0 6px;font-size:26px}
+    header p{margin:0;opacity:.95}
+    .wrap{max-width:1580px;margin:0 auto;padding:16px}
+    .panel{background:#fff;border:1px solid var(--vf-line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+    .filters{display:grid;grid-template-columns:2fr 1fr 1fr 1fr auto auto;gap:10px;align-items:end}
+    label{display:block;font-size:13px;font-weight:bold;margin-bottom:6px}
+    input,select,button{width:100%;padding:10px 12px;border:1px solid #cfcfcf;border-radius:8px;font-size:14px}
+    button{cursor:pointer;background:var(--vf-red);color:#fff;border:none;font-weight:bold}
+    button.secondary{background:#666}
+    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+    .stat{background:var(--vf-gray);border:1px solid var(--vf-line);border-radius:10px;padding:12px}
+    .stat b{display:block;font-size:22px;margin-top:4px}
+    .grid2{display:grid;grid-template-columns:1.5fr .5fr;gap:16px}
+    .section-title{display:flex;justify-content:space-between;gap:10px;align-items:flex-end;flex-wrap:wrap}
+    .table-wrap{overflow:auto;border:1px solid var(--vf-line);border-radius:10px;background:#fff}
+    table{width:100%;border-collapse:collapse;background:#fff}
+    .main-table{min-width:1600px}
+    .compare-table{min-width:1080px}
+    th,td{padding:10px 8px;border-bottom:1px solid #ececec;vertical-align:top;text-align:left;font-size:14px}
+    th{background:#f0f0f0;position:sticky;top:0;z-index:1}
+    tr:hover td{background:#fff8f8}
+    .tag{display:inline-block;padding:3px 8px;border-radius:999px;background:#ffe5e5;color:#a30000;font-weight:bold;font-size:12px}
+    .yes{color:var(--ok);font-weight:bold}.no{color:var(--no)}
+    .small{font-size:12px}.muted{color:#666}.note{font-size:13px;line-height:1.45}
+    .compare-highlight td{background:var(--soft)}
+    .zone-col{background:var(--zone) !important}
+    .pkg-block{line-height:1.45}
+    .pkg-main{font-weight:bold;color:var(--blue);margin-bottom:4px}
+    .pkg-list{margin:0;padding-left:18px}
+    .pkg-list li{margin:4px 0}
+    .code{display:inline-block;padding:1px 6px;border-radius:999px;background:#eef6ff;color:var(--blue);font-size:12px;font-weight:bold}
+    @media (max-width:900px){.filters,.grid2{grid-template-columns:1fr} header h1{font-size:22px}}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Suchmatrix CallYa Roaming</h1>
+    <p>Basis: Vodafone InfoDok 397, Stand April 2026 – alle drei Travel-Pakete direkt in der Länderzeile</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="panel">
+    <div class="filters">
+      <div>
+        <label for="q">Suche nach Land, Zone, Netzstandard, Paket, Preis oder Buchungscode</label>
+        <input id="q" type="text" placeholder="z. B. Italien, USA, Zone 2, VoLTE, Travel1, World2" />
+      </div>
+      <div>
+        <label for="typ">Datentyp</label>
+        <select id="typ">
+          <option value="">Alle</option>
+          <option value="Land">Land</option>
+          <option value="Paket">Paket</option>
+          <option value="Preisübersicht">Preisübersicht</option>
+          <option value="Hinweis">Hinweis</option>
+        </select>
+      </div>
+      <div>
+        <label for="zone">Zone</label>
+        <select id="zone">
+          <option value="">Alle</option>
+          <option value="1">Zone 1</option>
+          <option value="2">Zone 2</option>
+          <option value="3">Zone 3</option>
+          <option value="4">Zone 4</option>
+        </select>
+      </div>
+      <div>
+        <label for="netz">Netz</label>
+        <select id="netz">
+          <option value="">Alle</option>
+          <option value="3G">3G</option>
+          <option value="4G">4G</option>
+          <option value="VoLTE">VoLTE</option>
+          <option value="5G">5G</option>
+        </select>
+      </div>
+      <div><button id="btnSearch">Filtern</button></div>
+      <div><button id="btnReset" class="secondary">Zurücksetzen</button></div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <div class="panel">
+        <div class="section-title">
+          <h2 style="margin:0">Integrierte Preistabelle im Suchergebnis</h2>
+          <span class="small muted">Direktvergleich der Zonen und Travel-Angebote</span>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table class="compare-table" id="compareTable">
+            <thead>
+              <tr>
+                <th>Vergleichspunkt</th><th id="h1">Zone 1</th><th id="h2">Zone 2</th><th id="h3">Zone 3</th><th id="h4">Zone 4</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="section-title">
+          <h2 style="margin:0">Suchergebnis</h2>
+          <span class="small muted">Bei Ländern werden jetzt alle drei passenden Travel-Pakete direkt in derselben Zeile angezeigt.</span>
+        </div>
+        <div class="table-wrap" style="margin-top:12px;">
+          <table id="resultTable" class="main-table">
+            <thead>
+              <tr>
+                <th>Typ</th><th>Land / Bereich</th><th>Zone</th><th>3G</th><th>4G</th><th>VoLTE</th><th>5G</th><th>Paket / Leistung</th><th>Preis</th><th>Buchungscode</th><th>Hinweis</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="panel">
+        <h2 style="margin-top:0">Kennzahlen</h2>
+        <div class="stats">
+          <div class="stat"><span class="muted">Treffer</span><b id="countRows">0</b></div>
+          <div class="stat"><span class="muted">Länder</span><b id="countCountries">0</b></div>
+          <div class="stat"><span class="muted">Travel-Pakete</span><b id="countPackages">0</b></div>
+          <div class="stat"><span class="muted">Preiszeilen</span><b id="countPrices">0</b></div>
+        </div>
+      </div>
+     <!-- <div class="panel note">
+        <h2 style="margin-top:0">Kurzinfo</h2>
+        <p><b>Neu:</b> Bei Ländern in Zone 2, 3 und 4 stehen jetzt <b>alle drei Travel-Pakete</b> direkt im Suchergebnis.</p>
+        <p><b>Zone 1:</b> Zeigt EU-Roaming wie in Deutschland.</p>
+        <p><b>Zone 2–4:</b> Zeigt Day, Week und Talk jeweils mit Preis und Buchungscode in derselben Länderzeile.</p>
+      </div>-->
+    </div>
+  </div>
+</div>
+<script>
+const rows = [];
+const compareRows = [
+  {title:'Abgehend nach Deutschland/EU', z1:'0,09 €/Min.', z2:'0,19 €/Min.', z3:'0,29 €/Min.', z4:'2,99 €/Min.'},
+  {title:'Abgehend in andere Zonen', z1:'2,99 €/Min.', z2:'2,99 €/Min.', z3:'2,99 €/Min.', z4:'2,99 €/Min.'},
+  {title:'Eingehende Verbindungen', z1:'kostenlos', z2:'0,19 €/Min.', z3:'0,29 €/Min.', z4:'2,99 €/Min.'},
+  {title:'SMS senden', z1:'0,09 €', z2:'0,09 €', z3:'0,19 €', z4:'0,49 €'},
+  {title:'Daten ohne Paket', z1:'0,03 €/MB', z2:'0,09 €/MB', z3:'0,19 €/MB', z4:'0,99 €/MB'},
+  {title:'Travel Day', z1:'–', z2:'1 GB / 4,99 € / Travel1', z3:'250 MB / 4,99 € / World1', z4:'100 MB / 4,99 € / Select1'},
+  {title:'Travel Week', z1:'–', z2:'5 GB / 9,99 € / Travel2', z3:'1 GB / 9,99 € / World2', z4:'250 MB / 9,99 € / Select2'},
+  {title:'Travel Talk', z1:'–', z2:'200 Units / 9,99 € / Travel9', z3:'100 Units / 9,99 € / World9', z4:'50 Units / 9,99 € / Select9'}
+];
+
+const zonePackageMap = {
+  '1': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">EU-Roaming wie in Deutschland</div><div>Nutzung zu nationalen Konditionen</div></div>',
+    preisHtml: 'keine Zusatzkosten / Heimattarif',
+    codeHtml: '-',
+    hinweis: 'Zone 1: Nutzung zu nationalen Konditionen'
+  },
+  '2': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">CallYa Travel</div><ul class="pkg-list"><li>Travel Day – 1 GB</li><li>Travel Week – 5 GB</li><li>Travel Talk – 200 Units</li></ul></div>',
+    preisHtml: '<div class="pkg-block"><div>4,99 € / 1 Tag</div><div>9,99 € / 7 Tage</div><div>9,99 € / 7 Tage</div></div>',
+    codeHtml: '<div class="pkg-block"><div><span class="code">Travel1</span></div><div><span class="code">Travel2</span></div><div><span class="code">Travel9</span></div></div>',
+    hinweis: 'Zone 2: CallYa Travel Day / Week / Talk'
+  },
+  '3': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">CallYa Travel World</div><ul class="pkg-list"><li>World Day – 250 MB</li><li>World Week – 1 GB</li><li>World Talk – 100 Units</li></ul></div>',
+    preisHtml: '<div class="pkg-block"><div>4,99 € / 1 Tag</div><div>9,99 € / 7 Tage</div><div>9,99 € / 7 Tage</div></div>',
+    codeHtml: '<div class="pkg-block"><div><span class="code">World1</span></div><div><span class="code">World2</span></div><div><span class="code">World9</span></div></div>',
+    hinweis: 'Zone 3: CallYa Travel World Day / Week / Talk'
+  },
+  '4': {
+    paketHtml: '<div class="pkg-block"><div class="pkg-main">CallYa Travel Select</div><ul class="pkg-list"><li>Select Day – 100 MB</li><li>Select Week – 250 MB</li><li>Select Talk – 50 Units</li></ul></div>',
+    preisHtml: '<div class="pkg-block"><div>4,99 € / 1 Tag</div><div>9,99 € / 7 Tage</div><div>9,99 € / 7 Tage</div></div>',
+    codeHtml: '<div class="pkg-block"><div><span class="code">Select1</span></div><div><span class="code">Select2</span></div><div><span class="code">Select9</span></div></div>',
+    hinweis: 'Zone 4: CallYa Travel Select Day / Week / Talk'
+  }
+};
+
+function add(o){rows.push(o)}
+function yn(v){ if(v==='Ja') return '<span class="yes">Ja</span>'; if(v==='-') return '<span class="no">-</span>'; return v||'-'; }
+function norm(v){return (v||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ß/g,'ss');}
+
+[
+ ['Preisübersicht','Zone 1','1','-','-','-','-','Abgehend nach Deutschland/EU','0,09 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 2','2','-','-','-','-','Abgehend nach Deutschland/EU','0,19 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 3','3','-','-','-','-','Abgehend nach Deutschland/EU','0,29 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 4','4','-','-','-','-','Abgehend nach Deutschland/EU','2,99 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 1','1','-','-','-','-','Abgehend in andere Zonen','2,99 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 2','2','-','-','-','-','Abgehend in andere Zonen','2,99 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 3','3','-','-','-','-','Abgehend in andere Zonen','2,99 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 4','4','-','-','-','-','Abgehend in andere Zonen','2,99 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 1','1','-','-','-','-','Eingehende Verbindungen','kostenlos','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 2','2','-','-','-','-','Eingehende Verbindungen','0,19 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 3','3','-','-','-','-','Eingehende Verbindungen','0,29 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 4','4','-','-','-','-','Eingehende Verbindungen','2,99 €/Min.','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 1','1','-','-','-','-','SMS versenden','0,09 €','-','SMS empfangen kostenlos'],
+ ['Preisübersicht','Zone 2','2','-','-','-','-','SMS versenden','0,09 €','-','SMS empfangen kostenlos'],
+ ['Preisübersicht','Zone 3','3','-','-','-','-','SMS versenden','0,19 €','-','SMS empfangen kostenlos'],
+ ['Preisübersicht','Zone 4','4','-','-','-','-','SMS versenden','0,49 €','-','SMS empfangen kostenlos'],
+ ['Preisübersicht','Zone 1','1','-','-','-','-','Daten pro MB','0,03 €/MB','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 2','2','-','-','-','-','Daten pro MB','0,09 €/MB','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 3','3','-','-','-','-','Daten pro MB','0,19 €/MB','-','Ohne Travel-Paket'],
+ ['Preisübersicht','Zone 4','4','-','-','-','-','Daten pro MB','0,99 €/MB','-','Ohne Travel-Paket']
+].forEach(r=>add({typ:r[0],land:r[1],zone:r[2],g3:r[3],g4:r[4],volte:r[5],g5:r[6],paket:r[7],preis:r[8],code:r[9],hinweis:r[10]}));
+
+[
+ ['Paket','Zone 2 Travel','2','-','-','-','-','CallYa Travel Day – 1 GB','4,99 € / 1 Tag','Travel1','Zone 2'],
+ ['Paket','Zone 2 Travel','2','-','-','-','-','CallYa Travel Week – 5 GB','9,99 € / 7 Tage','Travel2','Zone 2'],
+ ['Paket','Zone 2 Travel','2','-','-','-','-','CallYa Travel Talk – 200 Units','9,99 € / 7 Tage','Travel9','Zone 2'],
+ ['Paket','Zone 3 Travel World','3','-','-','-','-','CallYa Travel World Day – 250 MB','4,99 € / 1 Tag','World1','Zone 3'],
+ ['Paket','Zone 3 Travel World','3','-','-','-','-','CallYa Travel World Week – 1 GB','9,99 € / 7 Tage','World2','Zone 3'],
+ ['Paket','Zone 3 Travel World','3','-','-','-','-','CallYa Travel World Talk – 100 Units','9,99 € / 7 Tage','World9','Zone 3'],
+ ['Paket','Zone 4 Travel Select','4','-','-','-','-','CallYa Travel Select Day – 100 MB','4,99 € / 1 Tag','Select1','Zone 4'],
+ ['Paket','Zone 4 Travel Select','4','-','-','-','-','CallYa Travel Select Week – 250 MB','9,99 € / 7 Tage','Select2','Zone 4'],
+ ['Paket','Zone 4 Travel Select','4','-','-','-','-','CallYa Travel Select Talk – 50 Units','9,99 € / 7 Tage','Select9','Zone 4']
+].forEach(r=>add({typ:r[0],land:r[1],zone:r[2],g3:r[3],g4:r[4],volte:r[5],g5:r[6],paket:r[7],preis:r[8],code:r[9],hinweis:r[10]}));
+
+[
+ 'EU-Roaming (Zone 1): Nutzung wie in Deutschland ohne weitere Aufschläge.',
+ 'Zusätzlich zum EU-Roaming-Gebiet gehören Französische Überseegebiete, Großbritannien, Island, Liechtenstein, Norwegen, Republik Moldau und die Ukraine.',
+ 'Travel-Pakete buchbar per SMS an 80808, per *100#, über 22922 oder in der MeinVodafone-App.',
+ 'Pakete verlängern sich nicht automatisch und können mehrfach sowie gleichzeitig gebucht werden.',
+ 'Rufnummern im Ausland immer im internationalen Format wählen: +49 + Vorwahl ohne 0 + Rufnummer.',
+ 'Roaming im Flugzeug und auf Schiffen ist nicht im EU-Roaming enthalten.',
+ 'In einigen Ländern wird kein Roaming angeboten, u. a. Antarktis, Nord-Korea, Somalia, Syrien und Tuvalu.'
+].forEach(t=>add({typ:'Hinweis',land:'Allgemein',zone:'-',g3:'-',g4:'-',volte:'-',g5:'-',paket:'-',preis:'-',code:'-',hinweis:t}));
+
+const countries = [
+['Afghanistan','3','Ja','Ja','-','Ja'],['Ägypten','3','Ja','Ja','-','Ja'],['Albanien','2','Ja','Ja','Ja','Ja'],['Algerien','3','Ja','Ja','-','-'],['Amerikanische Jungferninseln (Virgin Islands; USA)','2','Ja','Ja','Ja','-'],['Amerikanisch-Samoa','3','-','Ja','Ja','-'],['Andorra','2','Ja','Ja','Ja','-'],['Angola','4','Ja','-','-','-'],['Anguilla','3','Ja','Ja','Ja','-'],['Antigua & Barbuda','3','Ja','Ja','Ja','-'],['Argentinien','3','Ja','Ja','Ja','Ja'],['Armenien','3','Ja','Ja','-','Ja'],['Aruba (ehem. Niederl. Antillen)','3','-','-','-','Ja'],['Äthiopien','4','Ja','Ja','Ja','Ja'],['Australien','3','Ja','Ja','Ja','Ja'],['Bahamas','3','Ja','Ja','-','-'],['Bahrain','3','Ja','Ja','Ja','-'],['Bangladesch','3','Ja','Ja','-','-'],['Barbados','3','Ja','Ja','-','-'],['Belarus (Weißrussland)','3','Ja','-','-','-'],['Belgien','1','Ja','Ja','Ja','Ja'],['Belize','3','Ja','Ja','-','-'],['Benin','3','Ja','Ja','-','-'],['Bermuda','3','-','Ja','Ja','Ja'],['Bhutan','4','Ja','Ja','-','-'],['Bolivien','4','Ja','-','-','-'],['Bonaire (ehem. Niederl. Antillen)','3','Ja','-','-','-'],['Bosnien-Herzegowina','2','Ja','Ja','-','-'],['Botswana','3','Ja','Ja','Ja','Ja'],['Brasilien','3','Ja','Ja','Ja','Ja'],['Britische Jungferninseln','3','Ja','Ja','Ja','-'],['Brunei','3','Ja','Ja','Ja','-'],['Bulgarien','1','Ja','Ja','Ja','Ja'],['Burkina Faso','3','Ja','Ja','Ja','-'],['Burundi','4','Ja','-','-','-'],['Cayman Inseln','3','-','Ja','Ja','Ja'],['Chile','3','Ja','Ja','Ja','Ja'],['China','3','Ja','Ja','Ja','Ja'],['Costa Rica','3','Ja','Ja','Ja','Ja'],['Curacao (ehem. Niederl. Antillen)','3','-','-','-','-'],['Dänemark','1','Ja','Ja','Ja','Ja'],['Deutschland','1','Ja','Ja','Ja','Ja'],['Dominica','3','Ja','Ja','-','-'],['Dominikanische Republik','3','Ja','Ja','Ja','-'],['Dschibuti','4','Ja','Ja','-','-'],['Ecuador','3','Ja','Ja','Ja','-'],['El Salvador','3','Ja','Ja','Ja','-'],['Elfenbeinküste','3','Ja','Ja','-','-'],['Estland','1','Ja','Ja','Ja','Ja'],['Faroer Inseln (Dänemark)','2','Ja','Ja','Ja','Ja'],['Fidschi','3','Ja','Ja','Ja','Ja'],['Finnland','1','Ja','Ja','Ja','Ja'],['Frankreich','1','Ja','Ja','Ja','Ja'],['Französisch Guyana (Frankreich)','1','Ja','Ja','Ja','Ja'],['Französisch-Polynesien','3','Ja','Ja','Ja','-'],['Gabun','3','Ja','Ja','-','-'],['Gambia','4','Ja','Ja','-','Ja'],['Georgien','3','Ja','Ja','Ja','Ja'],['Ghana','3','Ja','Ja','Ja','-'],['Gibraltar (Großbritannien)','1','Ja','Ja','Ja','Ja'],['Griechenland','1','Ja','Ja','Ja','Ja'],['Grönland (Dänemark)','2','-','Ja','Ja','-'],['Großbritannien (ohne Kanalinseln)','1','Ja','Ja','Ja','Ja'],['Guadeloupe (Frankreich)','1','Ja','Ja','Ja','Ja'],['Guam (USA)','1','Ja','Ja','Ja','Ja'],['Guatemala','3','Ja','Ja','Ja','Ja'],['Guernsey (Großbritannien)','2','Ja','Ja','-','-'],['Guinea','3','Ja','Ja','-','-'],['Guinea-Bissau','3','Ja','-','-','-'],['Guayana','3','Ja','-','-','-'],['Haiti (über Jamaika)','3','Ja','Ja','-','-'],['Honduras','3','Ja','Ja','-','-'],['Hongkong (China)','3','Ja','Ja','Ja','Ja'],['Indien','3','Ja','Ja','Ja','Ja'],['Indonesien','3','-','Ja','Ja','Ja'],['Irak','3','Ja','Ja','-','-'],['Iran','3','Ja','Ja','-','-'],['Irland','1','Ja','Ja','Ja','Ja'],['Island','1','Ja','Ja','Ja','Ja'],['Isle of Man (Großbritannien)','2','Ja','Ja','Ja','-'],['Israel','3','Ja','Ja','Ja','-'],['Italien','1','Ja','Ja','Ja','Ja'],['Jamaika','3','Ja','Ja','Ja','-'],['Jan Mayen (Norwegen)','1','Ja','Ja','Ja','-'],['Japan','3','Ja','-','Ja','Ja'],['Jemen','4','-','-','-','-'],['Jersey (Großbritannien)','2','Ja','Ja','Ja','Ja'],['Jordanien','3','Ja','Ja','-','Ja'],['Kambodscha','3','-','Ja','-','-'],['Kamerun','3','Ja','Ja','-','-'],['Kanada','2','Ja','Ja','Ja','Ja'],['Kapverdische Inseln','3','Ja','Ja','-','-'],['Kasachstan','3','Ja','Ja','Ja','-'],['Katar','3','Ja','Ja','Ja','Ja'],['Kenia','3','Ja','Ja','Ja','Ja'],['Kirgistan','3','Ja','Ja','-','-'],['Kiribati','4','Ja','-','-','-'],['Kolumbien','3','Ja','-','Ja','-'],['Komoren','3','Ja','-','-','-'],['Kongo (Republik, Brazzaville)','3','Ja','-','-','-'],['Kongo (Dem. Republik)','3','Ja','-','-','-'],['Kosovo','2','Ja','Ja','-','Ja'],['Kroatien','1','Ja','Ja','Ja','Ja'],['Kuwait','3','Ja','Ja','Ja','Ja'],['Laos','3','Ja','Ja','Ja','-'],['Lesotho','3','Ja','Ja','-','Ja'],['Lettland','1','Ja','Ja','Ja','Ja'],['Libanon','3','Ja','Ja','-','-'],['Liberia','3','Ja','-','-','-'],['Libyen','4','Ja','-','-','-'],['Liechtenstein','1','Ja','Ja','Ja','Ja'],['Litauen','1','Ja','Ja','Ja','Ja'],['Luxemburg','1','Ja','Ja','Ja','Ja'],['Macau (China)','3','Ja','Ja','Ja','Ja'],['Madagaskar','3','Ja','Ja','-','-'],['Malawi','3','Ja','Ja','-','-'],['Malaysia','3','Ja','Ja','Ja','-'],['Malediven','3','Ja','Ja','Ja','-'],['Mali','1','Ja','Ja','Ja','Ja'],['Malta','1','Ja','Ja','Ja','Ja'],['Maritime Services/Schiffe (z.B. Kreuzfahrten, Fähren)','4','-','-','-','-'],['Marokko','3','Ja','Ja','-','-'],['Martinique (Frankreich)','1','Ja','Ja','Ja','Ja'],['Mauretanien','4','Ja','-','-','-'],['Mauritius','3','Ja','Ja','Ja','Ja'],['Mayotte (Frankreich)','1','Ja','Ja','Ja','Ja'],['Mexiko','3','Ja','Ja','Ja','Ja'],['Moldau (Republik)','1','Ja','Ja','Ja','Ja'],['Monaco','2','Ja','Ja','Ja','-'],['Mongolei','3','Ja','Ja','-','-'],['Montenegro','2','Ja','Ja','Ja','Ja'],['Montserrat','3','Ja','Ja','Ja','-'],['Mosambik','3','Ja','Ja','-','-'],['Myanmar','3','Ja','Ja','-','-'],['Namibia','4','Ja','Ja','-','-'],['Nepal','3','Ja','Ja','-','-'],['Neukaledonien','4','Ja','-','-','-'],['Neuseeland','3','Ja','Ja','Ja','Ja'],['Nicaragua','3','Ja','Ja','Ja','-'],['Niederlande','1','Ja','Ja','Ja','Ja'],['Niger','3','Ja','Ja','-','-'],['Nigeria','3','Ja','Ja','Ja','Ja'],['Nordmazedonien','2','Ja','Ja','-','-'],['Norfolk Island (Australien)','4','-','-','-','-'],['Norwegen','1','Ja','Ja','Ja','Ja'],['Oman','3','Ja','Ja','Ja','-'],['Österreich','1','Ja','Ja','Ja','Ja'],['Osttimor','4','-','-','-','-'],['Pakistan','3','Ja','-','-','-'],['Palästinensische Gebiete','3','Ja','-','-','-'],['Palau','3','-','Ja','Ja','-'],['Panama','3','Ja','Ja','Ja','-'],['Papua-Neuguinea','3','Ja','Ja','Ja','-'],['Paraguay','3','Ja','Ja','Ja','-'],['Peru','3','Ja','Ja','Ja','Ja'],['Philippinen','3','Ja','Ja','Ja','-'],['Polen','1','Ja','Ja','Ja','Ja'],['Portugal (inkl. Azoren & Madeira)','1','Ja','Ja','Ja','Ja'],['Puerto Rico (USA)','3','-','Ja','Ja','Ja'],['Reunion (Frankreich)','1','Ja','Ja','Ja','Ja'],['Roaming im Flugzeug','4','-','-','-','-'],['Ruanda','3','Ja','Ja','-','-'],['Rumänien','1','Ja','Ja','Ja','Ja'],['Salomon-Inseln','4','-','-','-','-'],['Sambia','3','Ja','Ja','-','-'],['Samoa','3','Ja','Ja','Ja','Ja'],['San Marino (über italien. Netz)','1','Ja','Ja','Ja','Ja'],['Saudi-Arabien','3','Ja','Ja','Ja','Ja'],['Schweden','1','Ja','Ja','Ja','Ja'],['Schweiz','2','Ja','Ja','Ja','Ja'],['Senegal','3','Ja','-','-','Ja'],['Serbien','2','Ja','Ja','-','-'],['Seychellen','3','Ja','Ja','Ja','Ja'],['Sierra Leone','3','Ja','-','-','-'],['Simbabwe','4','Ja','Ja','-','-'],['Singapur','3','Ja','Ja','Ja','Ja'],['Slowakei','1','Ja','Ja','Ja','Ja'],['Slowenien','1','Ja','Ja','Ja','Ja'],['Spanien (inkl. Kanarische Inseln)','1','Ja','Ja','Ja','Ja'],['Sri Lanka','3','Ja','Ja','Ja','Ja'],['St. Barth/St. Barthelemy','1','Ja','Ja','Ja','-'],['St. Kitts','3','Ja','Ja','Ja','-'],['St. Lucia','3','Ja','Ja','Ja','-'],['St. Maarten (ehem. Niederl. Antillen)','3','-','-','-','-'],['St. Martin (Frankreich)','1','Ja','Ja','Ja','-'],['St. Pierre et Miquelon','3','-','Ja','-','-'],['St. Vincent und die Grenadine','3','-','Ja','Ja','-'],['Südafrika','3','Ja','Ja','Ja','-'],['Süd-Korea','3','Ja','Ja','Ja','Ja'],['Süd-Sudan','3','Ja','Ja','-','-'],['Surinam','3','Ja','Ja','-','-'],['Svalbad (Norwegen)','1','Ja','Ja','Ja','-'],['Swasiland (Eswantini)','3','Ja','Ja','-','-'],['Tadschikistan','3','Ja','Ja','-','-'],['Taiwan','3','Ja','Ja','Ja','Ja'],['Tansania','3','Ja','Ja','Ja','-'],['Thailand','3','Ja','Ja','Ja','Ja'],['Togo','3','Ja','Ja','Ja','Ja'],['Tonga','3','Ja','Ja','-','-'],['Trinidad und Tobago','3','Ja','Ja','-','-'],['Tschad','3','Ja','Ja','-','-'],['Tschechische Republik','1','Ja','Ja','Ja','Ja'],['Tunesien','3','Ja','Ja','Ja','Ja'],['Türkei (inkl. Nordzypern)','2','Ja','Ja','Ja','Ja'],['Turkmenistan','4','-','-','-','-'],['Turks und Caicosinseln','3','Ja','Ja','Ja','-'],['Uganda','3','Ja','Ja','Ja','Ja'],['Ukraine','1','Ja','Ja','Ja','Ja'],['Ungarn','1','Ja','Ja','Ja','Ja'],['Uruguay','3','Ja','Ja','Ja','Ja'],['USA','2','Ja','Ja','Ja','Ja'],['Usbekistan','3','Ja','Ja','-','Ja'],['Vanuatu','3','Ja','Ja','-','-'],['Vatikan Stadt (über italien. Netz)','1','Ja','Ja','Ja','Ja'],['Venezuela','4','Ja','Ja','-','-'],['Vereinigte Arabische Emirate','3','Ja','Ja','-','-'],['Vietnam','3','Ja','Ja','Ja','Ja'],['Westsahara (über Marokko)','3','Ja','Ja','-','-'],['Zentralafrikanische Republik','3','Ja','Ja','-','-'],['Zypern','1','Ja','Ja','Ja','Ja']
+];
+countries.forEach(c=>add({typ:'Land',land:c[0],zone:c[1],g3:c[2],g4:c[3],volte:c[4],g5:c[5],paket:'-',preis:'-',code:'-',hinweis:'Länderliste CallYa Roaming'}));
+
+const tbody=document.querySelector('#resultTable tbody');
+const compareBody=document.querySelector('#compareTable tbody');
+const q=document.getElementById('q'); const typ=document.getElementById('typ'); const zone=document.getElementById('zone'); const netz=document.getElementById('netz');
+
+function renderCompare(){
+  const s = norm(q.value.trim());
+  const filtered = compareRows.filter(r => {
+    const txt = norm([r.title,r.z1,r.z2,r.z3,r.z4].join(' '));
+    return !s || txt.includes(s) || (zone.value && ['1','2','3','4'].includes(zone.value));
+  });
+  const items = filtered.length ? filtered : compareRows;
+  compareBody.innerHTML = items.map((r, idx) => `\n    <tr class="${idx % 2 === 0 ? 'compare-highlight' : ''}">\n      <td><b>${r.title}</b></td>\n      <td class="${zone.value==='1' ? 'zone-col' : ''}">${r.z1}</td>\n      <td class="${zone.value==='2' ? 'zone-col' : ''}">${r.z2}</td>\n      <td class="${zone.value==='3' ? 'zone-col' : ''}">${r.z3}</td>\n      <td class="${zone.value==='4' ? 'zone-col' : ''}">${r.z4}</td>\n    </tr>`).join('');
+  ['1','2','3','4'].forEach(z => document.getElementById('h'+z).classList.toggle('zone-col', zone.value===z));
+}
+
+function enrichedRow(r){
+  if(r.typ !== 'Land') return r;
+  const m = zonePackageMap[r.zone] || {paketHtml:'-',preisHtml:'-',codeHtml:'-',hinweis:r.hinweis};
+  return {
+    ...r,
+    paket: m.paketHtml,
+    preis: m.preisHtml,
+    code: m.codeHtml,
+    hinweis: r.hinweis
+  };
+}
+
+function renderResults(data){
+  tbody.innerHTML = data.map(base=>{
+    const r = enrichedRow(base);
+    return `<tr><td>${r.typ}</td><td><b>${r.land}</b></td><td>${r.zone==='-'?'-':'<span class="tag">Zone '+r.zone+'</span>'}</td><td>${yn(r.g3)}</td><td>${yn(r.g4)}</td><td>${yn(r.volte)}</td><td>${yn(r.g5)}</td><td>${r.paket}</td><td>${r.preis}</td><td>${r.code}</td><td>${r.hinweis}</td></tr>`;
+  }).join('');
+  document.getElementById('countRows').textContent = data.length;
+  document.getElementById('countCountries').textContent = rows.filter(r=>r.typ==='Land').length;
+  document.getElementById('countPackages').textContent = rows.filter(r=>r.typ==='Paket').length;
+  document.getElementById('countPrices').textContent = rows.filter(r=>r.typ==='Preisübersicht').length;
+}
+
+function filterData(){
+  const s=norm(q.value.trim()), t=typ.value, z=zone.value, n=netz.value;
+  const filtered = rows.filter(r=>{
+    const extra = r.typ==='Land' && zonePackageMap[r.zone] ? JSON.stringify(zonePackageMap[r.zone]) : '';
+    const txt = norm([r.typ,r.land,r.zone,r.g3,r.g4,r.volte,r.g5,r.paket,r.preis,r.code,r.hinweis,extra].join(' '));
+    const a = !s || txt.includes(s);
+    const b = !t || r.typ===t;
+    const c = !z || r.zone===z;
+    let d = true;
+    if(n==='3G') d = r.g3==='Ja';
+    if(n==='4G') d = r.g4==='Ja';
+    if(n==='VoLTE') d = r.volte==='Ja';
+    if(n==='5G') d = r.g5==='Ja';
+    return a && b && c && d;
+  }).sort((a,b)=>a.land.localeCompare(b.land,'de'));
+  renderCompare();
+  renderResults(filtered);
+}
+
+document.getElementById('btnSearch').addEventListener('click',filterData);
+document.getElementById('btnReset').addEventListener('click',()=>{q.value='';typ.value='';zone.value='';netz.value='';filterData();});
+q.addEventListener('input',filterData); typ.addEventListener('change',filterData); zone.addEventListener('change',filterData); netz.addEventListener('change',filterData);
+filterData();
+</script>
+</body>
+</html>
